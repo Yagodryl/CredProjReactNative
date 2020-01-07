@@ -44,6 +44,9 @@ class HomeScreen extends Component {
     };
     state = {}
     render() {
+
+        const {navigate} = this.props.navigation;
+
         return (
             <ThemeProvider theme={ theme }>
                 <ImageBackground style={ { width: '100%', height: '100%' } } source={ require('../../Img/background.jpg') }>
@@ -51,9 +54,9 @@ class HomeScreen extends Component {
                         <View style={ styles.container }>
                             <Text style={ styles.textTitle }>Швидкі кредити</Text>
 
-                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#fce4ec' } } title="Мікро позики" onPress={ () => Alert.alert('Simple Button pressed') } />
-                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#f3e5f5' } } title="Кредити" onPress={ () => Alert.alert('Simple Button pressed') } />
-                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#e8f5e9' } } title="Кредитны картки" onPress={ () => Alert.alert('Simple Button pressed') } />
+                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#fce4ec' } } title="Мікро позики" onPress={ () => navigate('MicroCredit')} />
+                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#f3e5f5' } } title="Кредити" onPress={ () => navigate('Credit') } />
+                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#e8f5e9' } } title="Кредитні картки" onPress={ () => navigate('CardsList') } />
                             <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#fff3e0' } } title="Кредитна історія" onPress={ () => Alert.alert('Simple Button pressed') } />
                             <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#fffde7' } } title="Статті" onPress={ () => Alert.alert('Simple Button pressed') } />
                         </View>
