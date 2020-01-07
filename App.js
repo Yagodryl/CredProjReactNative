@@ -5,22 +5,26 @@ import { StyleSheet, Text, View } from 'react-native';
 
 //Screens
 import HomeScreen from "./components/Home/HomeScreen";
+import MicroCreditScreen from "./components/MicroCredit/MicroCreditScreen";
+
+
 
 const MainNavigator = createStackNavigator(
   {
     Home: {screen: HomeScreen},
+    MicroCredit : {screen: MicroCreditScreen},
   },
   {
     initialRouteName: 'Home',
-    // navigationOptions: {
-    //   headerStyle: {
-    //     backgroundColor: '#777777',
-    //   },
-    //   headerTintColor: '#fff',
-    //   headerTitleStyle: {
-    //     fontWeight: 'bold',
-    //   },
-    // },
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#777777',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
   },
 );
 
