@@ -8,13 +8,14 @@ import HomeScreen from "./components/Home/HomeScreen";
 import MicroCreditScreen from "./components/MicroCredit/MicroCreditScreen";
 import CreditScreen from "./components/Credit/CreditScreen";
 import CardsListScreen from "./components/CardsList/CardsListScreen";
-
+import ArticlesScreen from "./components/Articles/ArticlesScreen";
 const MainNavigator = createStackNavigator(
   {
     Home: {screen: HomeScreen},
     MicroCredit : {screen: MicroCreditScreen},
     Credit: {screen: CreditScreen},
-    CardsList: {screen: CardsListScreen}
+    CardsList: {screen: CardsListScreen},
+    Articles: {screen: ArticlesScreen}
 
   },
   {

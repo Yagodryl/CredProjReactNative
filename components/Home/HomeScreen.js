@@ -57,13 +57,13 @@ class HomeScreen extends Component {
                             <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#fce4ec' } } title="Мікро позики" onPress={ () => navigate('MicroCredit')} />
                             <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#f3e5f5' } } title="Кредити" onPress={ () => navigate('Credit') } />
                             <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#e8f5e9' } } title="Кредитні картки" onPress={ () => navigate('CardsList') } />
-                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#fff3e0' } } title="Кредитна історія" onPress={ () => Alert.alert('Simple Button pressed') } />
-                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#fffde7' } } title="Статті" onPress={ () => Alert.alert('Simple Button pressed') } />
+                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#fff3e0' } } title="Кредитна історія" onPress={ () => Alert.alert('History') } />
+                            <Button large titleStyle={ { color: 'black' } } buttonStyle={ { backgroundColor: '#fffde7' } } title="Статті" onPress={ () => navigate('Articles') } />
                         </View>
                         <View style={{marginHorizontal: 55, marginTop: 20}}>
                             <Button
                                 title="Інформація"
-
+                                onPress={ () => Alert.alert("Info") }
                                 titleStyle={{color: 'white'}} />
 
                         </View>
