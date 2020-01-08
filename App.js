@@ -5,17 +5,17 @@ import { StyleSheet, Text, View } from 'react-native';
 
 //Screens
 import HomeScreen from "./components/Home/HomeScreen";
-import MicroCreditScreen from "./components/MicroCredit/MicroCreditScreen";
-import CreditScreen from "./components/Credit/CreditScreen";
-import CardsListScreen from "./components/CardsList/CardsListScreen";
-import ArticlesScreen from "./components/Articles/ArticlesScreen";
+import ListMicroCreditScreen from "./components/MicroCredit/ListMicroCreditScreen";
+import ListCreditsScreen from "./components/Credit/ListCreditsScreen";
+import ListCardsScreen from "./components/Cards/ListCardsScreen";
+import ListArticlesScreen from "./components/Articles/ListArticlesScreen";
 const MainNavigator = createStackNavigator(
   {
     Home: {screen: HomeScreen},
-    MicroCredit : {screen: MicroCreditScreen},
-    Credit: {screen: CreditScreen},
-    CardsList: {screen: CardsListScreen},
-    Articles: {screen: ArticlesScreen}
+    ListMicroCredit : {screen: ListMicroCreditScreen},
+    ListCredit: {screen: ListCreditsScreen},
+    ListCards: {screen: ListCardsScreen},
+    ListArticles: {screen: ListArticlesScreen}
 
   },
   {

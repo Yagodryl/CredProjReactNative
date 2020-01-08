@@ -3,7 +3,7 @@ import {ScrollView} from "react-native";
 import CustomCard from "../CustomElements/CustomCard";
 
 
-class CaedsListScreen extends Component {
+class ListCardsScreen extends Component {
     static navigationOptions = {
         title: 'Кредитні картки',
     };
@@ -20,4 +20,4 @@ class CaedsListScreen extends Component {
     }
 }
 
-export default CaedsListScreen;
+export default ListCardsScreen;

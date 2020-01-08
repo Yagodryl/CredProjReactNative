@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { View, Text, StyleSheet } from 'react-native';
 import CustomCard from '../CustomElements/CustomCard'
 
-class CreditScreen extends Component {
+class ListCreditsScreen extends Component {
     static navigationOptions = {
         title: 'Кредити',
     };
@@ -22,4 +22,4 @@ class CreditScreen extends Component {
     }
 }
 
-export default CreditScreen;
+export default ListCreditsScreen;

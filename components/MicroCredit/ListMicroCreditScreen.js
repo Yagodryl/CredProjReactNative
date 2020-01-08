@@ -8,10 +8,14 @@ import CustomCard from "../CustomElements/CustomCard";
 
 
 
-class MicroCreditScreen extends Component {
+class ListMicroCreditScreen extends Component {
     static navigationOptions = {
         title: 'Мікро позики',
     };
+
+    redirect(id){
+        console.log("MicroCreditScreen "+id);  
+    }
 
     state = {}
     render() {
@@ -19,17 +23,23 @@ class MicroCreditScreen extends Component {
             <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
                 title="Bank Name"
                 description="dfsfsdfsdfs dfsdfd dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf"
-                btnColor="#8e24aa" />
-                 <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
+                btnColor="#8e24aa"
+                redirect={this.redirect} 
+                id={5}/>
+            <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
                 title="Bank Name2"
                 description="dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf"
-                btnColor="#8e24aa" />
-                 <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
+                btnColor="#8e24aa"
+                redirect={this.redirect}
+                id={15} />
+            <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
                 title="Bank Name3"
                 description="dfsfsdfsdfs fsdfd dsf sd fs dfsdf"
-                btnColor="#8e24aa" />
+                btnColor="#8e24aa"
+                redirect={this.redirect}
+                id={25} />
         </ScrollView>);
     }
 }
 
-export default MicroCreditScreen;
+export default ListMicroCreditScreen;
