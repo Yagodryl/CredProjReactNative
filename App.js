@@ -13,7 +13,7 @@ import ListArticlesScreen from "./components/Articles/ListArticlesScreen";
 import MicroCreditDetailsScreen from "./components/MicroCredit/MicroCreditDetailsScreen"
 import CreditDetailsScreen from "./components/Credit/CreditDetailsScreen"
 import CardDetailsScreen from "./components/Cards/CardDetailsScreen"
-
+import ArticleDetailsScreen from "./components/Articles/ArticleDetailsScreen";
 
 
 const MainNavigator = createStackNavigator(
@@ -26,7 +26,8 @@ const MainNavigator = createStackNavigator(
 
     MicroCreditDetails: {screen: MicroCreditDetailsScreen},
     CreditDetails:{screen: CreditDetailsScreen},
-    CardDetails: {screen: CardDetailsScreen}
+    CardDetails: {screen: CardDetailsScreen},
+    ArticleDetails: {screen: ArticleDetailsScreen}
   },
   {
     initialRouteName: 'Home',
