@@ -10,30 +10,34 @@ import CustomCard from "../CustomElements/CustomCard";
 
 class ListMicroCreditScreen extends Component {
     static navigationOptions = {
-        title: 'Мікро позики',
+        title: 'Мікропозики',
     };
+    
+    state = {}
 
-    redirect(id){
+    redirect=(id)=>{
         console.log("MicroCreditScreen "+id);  
+        this.props.navigation.navigate('MicroCreditDetails', {
+            id: `${id}`,
+        });
     }
 
-    state = {}
     render() {
         return (<ScrollView style={ { backgroundColor: "#ffebee" } }>
             <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
-                title="Bank Name"
+                title="Bank Name 5"
                 description="dfsfsdfsdfs dfsdfd dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf"
                 btnColor="#8e24aa"
                 redirect={this.redirect} 
                 id={5}/>
             <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
-                title="Bank Name2"
+                title="Bank Name 15"
                 description="dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf"
                 btnColor="#8e24aa"
                 redirect={this.redirect}
                 id={15} />
             <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
-                title="Bank Name3"
+                title="Bank Name 25"
                 description="dfsfsdfsdfs fsdfd dsf sd fs dfsdf"
                 btnColor="#8e24aa"
                 redirect={this.redirect}

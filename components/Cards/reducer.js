@@ -1,8 +1,8 @@
 
 //action types
-export const GET_CARDS_LIST_STARTED = 'cardsList/GET_CARDS_LIST_STARTED';
-export const GET_CARDS_LIST_SUCCESS = 'cardsList/GET_CARDS_LIST_SUCCESS';
-export const GET_CARDS_LIST_FAILED = 'cardsList/GET_CARDS_LIST_FAILED';
+export const GET_LIST_CARDS_STARTED = 'cardsList/GET_LIST_CARDS_STARTED';
+export const GET_LIST_CARDS_SUCCESS = 'cardsList/GET_LIST_CARDS_SUCCESS';
+export const GET_LIST_CARDS_FAILED = 'cardsList/GET_LIST_CARDS_FAILED';
 
 
 const initialState = {
@@ -14,21 +14,21 @@ const initialState = {
 //reducer
 export const cardsListReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_CARDS_LIST_STARTED: {
+        case GET_LIST_CARDS_STARTED: {
             return {
                 ...state,
                 loading: true,
                 error: {}
             }
         }
-        case GET_CARDS_LIST_SUCCESS: {
+        case GET_LIST_CARDS_SUCCESS: {
             return {
                 ...state,
                 loading: false,
                 data: action.payload,
             }
         }
-        case GET_CARDS_LIST_FAILED: {
+        case GET_LIST_CARDS_FAILED: {
             return {
                 ...state,
                 loading: true,
@@ -39,21 +39,21 @@ export const cardsListReducer = (state = initialState, action) => {
 }
 
 //action creator
-export const cardsListActions = {
+export const listCardsListActions = {
     started: () => {
         return {
-            type: GET_CARDS_LIST_STARTED,
+            type: GET_LIST_CARDS_STARTED,
         };
     },
     success: response => {
         return {
-            type: GET_CARDS_LIST_SUCCESS,
+            type: GET_LIST_CARDS_SUCCESS,
             payload: response.data,
         };
     },
     failed: (response) => {
         return {
-            type: GET_CARDS_LIST_FAILED,
+            type: GET_LIST_CARDS_FAILED,
             error: response.data,
         };
     }

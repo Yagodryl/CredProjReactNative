@@ -40,7 +40,7 @@ export const microCreditReducer = (state = initialState, action) => {
 
 //action creator
 
-export const microCreditActions = {
+export const listMicroCreditActions = {
     started: () => {
         return {
             type: GET_LIST_MICRO_CREDIT_STARTED,

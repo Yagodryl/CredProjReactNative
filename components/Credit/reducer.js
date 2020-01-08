@@ -39,7 +39,7 @@ export const creditReducer = (state = initialState, action) => {
 }
 
 //action creator
-export const creditActions = {
+export const listCreditActions = {
     started: () => {
         return {
             type: GET_LIST_CREDIT_STARTED,

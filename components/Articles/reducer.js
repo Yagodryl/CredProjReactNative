@@ -1,8 +1,8 @@
 
 //action types
-export const GET_ARTICLES_STARTED = 'articles/GET_ARTICLES_STARTED';
-export const GET_ARTICLES_SUCCESS = 'articles/GET_ARTICLES_SUCCESS';
-export const GET_ARTICLES_FAILED = 'articles/GET_ARTICLES_FAILED';
+export const GET_LIST_ARTICLES_STARTED = 'articles/GET_LIST_ARTICLES_STARTED';
+export const GET_LIST_ARTICLES_SUCCESS = 'articles/GET_LIST_ARTICLES_SUCCESS';
+export const GET_LIST_ARTICLES_FAILED = 'articles/GET_LIST_ARTICLES_FAILED';
 
 
 const initialState = {
@@ -14,21 +14,21 @@ const initialState = {
 //reducer
 export const articlesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_ARTICLES_STARTED: {
+        case GET_LIST_ARTICLES_STARTED: {
             return {
                 ...state,
                 loading: true,
                 error: {}
             }
         }
-        case GET_ARTICLES_SUCCESS: {
+        case GET_LIST_ARTICLES_SUCCESS: {
             return {
                 ...state,
                 loading: false,
                 data: action.payload,
             }
         }
-        case GET_ARTICLES_FAILED: {
+        case GET_LIST_ARTICLES_FAILED: {
             return {
                 ...state,
                 loading: true,
@@ -39,21 +39,21 @@ export const articlesReducer = (state = initialState, action) => {
 }
 
 //action creator
-export const articlesActions = {
+export const listArticlesActions = {
     started: () => {
         return {
-            type: GET_ARTICLES_STARTED,
+            type: GET_LIST_ARTICLES_STARTED,
         };
     },
     success: response => {
         return {
-            type: GET_ARTICLES_SUCCESS,
+            type: GET_LIST_ARTICLES_SUCCESS,
             payload: response.data,
         };
     },
     failed: (response) => {
         return {
-            type: GET_ARTICLES_FAILED,
+            type: GET_LIST_ARTICLES_FAILED,
             error: response.data,
         };
     }
