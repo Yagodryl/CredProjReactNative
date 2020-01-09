@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { StyleSheet, Text, View } from 'react-native';
+import firebase from "./firebase";
+
 
 //Screens
 import HomeScreen from "./components/Home/HomeScreen";
@@ -46,6 +48,19 @@ const MainNavigator = createStackNavigator(
 const RootContainer = createAppContainer(MainNavigator);
 
 export default class App extends React.Component {
+  
+  UNSAFE_componentWillMount(){
+    // firebase.database().ref('users/002').set({
+    //   name: "Petro",
+    //   age: 50
+    // }).then(()=>console.log("Inserted!"))
+    // .catch((error)=>console.log(error)
+    // )
+    // firebase.database().ref('users').once('value', (data)=>{
+    //   console.log(data.toJSON());
+    // })
+  }
+
   render() {
     return (
       <RootContainer />
