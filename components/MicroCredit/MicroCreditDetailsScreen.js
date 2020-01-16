@@ -11,6 +11,10 @@ import CreditInfoScreenForm from "../CustomElements/CreditInfoScreenForm"
 class MicroCreditDetailsScreen extends Component {
     static navigationOptions = {
         title: 'Мікропозика',
+        headerStyle: {
+            backgroundColor: '#000',
+        },
+        headerTintColor: '#fff',
     };
     state = {}
 
@@ -18,22 +22,11 @@ class MicroCreditDetailsScreen extends Component {
 
         return (
             <CreditInfoScreenForm
-                title="Bank Name"
-                image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
-                description={
-                    <>
-                    <Text>dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf</Text>
-                    <Text>dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf</Text>
-
-                    <Text>dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf</Text>
-                    </>
-                    
-            }
-                details={
-                    <Text>dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf</Text>
-                }
-                themeColor="#8e24aa"
-            />
+            title="Bank Name Card"
+            image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
+            description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            details='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        />
         );
     }
 }

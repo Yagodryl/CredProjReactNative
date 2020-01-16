@@ -52,7 +52,7 @@ const Scroller = ({ navigate, name }) => (
             </View>
         </TouchableOpacity>
         <TouchableOpacity style={ styles.button } onPress={ () => navigate('History') }  >
-            <Image style={ styles.Image } source={ require('../../Img/history.jpeg') } />
+            <Image style={ styles.Image } source={ require('../../Img/history.jpg') } />
             <View style={ styles.view }>
                 <Text style={ styles.text }>Кредитна історія</Text>
             </View>

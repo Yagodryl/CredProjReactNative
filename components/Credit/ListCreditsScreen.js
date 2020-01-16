@@ -30,7 +30,6 @@ class ListCreditsScreen extends Component {
                 <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
                     title="Bank Name"
                     description="dfsfsdfsdfs dfsdfd dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf"
-                    btnColor="#283593"
                     redirect={this.redirect} />
             </ScrollView>
             </ImageBackground>
