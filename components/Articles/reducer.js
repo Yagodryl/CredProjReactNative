@@ -1,4 +1,6 @@
 
+import ArticlesService from './ArticlesService';
+
 //action types
 export const GET_LIST_ARTICLES_STARTED = 'articles/GET_LIST_ARTICLES_STARTED';
 export const GET_LIST_ARTICLES_SUCCESS = 'articles/GET_LIST_ARTICLES_SUCCESS';
@@ -8,7 +10,7 @@ export const GET_LIST_ARTICLES_FAILED = 'articles/GET_LIST_ARTICLES_FAILED';
 const initialState = {
     data: {},
     loading: false,
-    error: {},
+    error: false,
 }
 
 //reducer
@@ -18,7 +20,7 @@ export const articlesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
-                error: {}
+                error: false
             }
         }
         case GET_LIST_ARTICLES_SUCCESS: {
@@ -31,14 +33,33 @@ export const articlesReducer = (state = initialState, action) => {
         case GET_LIST_ARTICLES_FAILED: {
             return {
                 ...state,
-                loading: true,
-                error: action.error
+                loading: false,
+                error: true
             }
         }
+        default: return state;
     }
 }
 
 //action creator
+
+export const getArticles = () =>{
+    return dispatch =>{
+        dispatch(listArticlesActions.started());
+        ArticlesService.getArticles()
+        .then(response=>{
+            console.log(response.val());
+            dispatch(listArticlesActions.success(response.val()));
+        })
+        .catch((response)=>{
+            dispatch(listArticlesActions.failed());
+            console.log(response);
+        })
+    }
+}
+
+
+
 export const listArticlesActions = {
     started: () => {
         return {
@@ -48,13 +69,13 @@ export const listArticlesActions = {
     success: response => {
         return {
             type: GET_LIST_ARTICLES_SUCCESS,
-            payload: response.data,
+            payload: response,
         };
     },
     failed: (response) => {
         return {
             type: GET_LIST_ARTICLES_FAILED,
-            error: response.data,
+            // error: response,
         };
     }
 }

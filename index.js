@@ -5,13 +5,13 @@ import {name as appName} from './app.json';
 import { Provider } from 'react-redux';
 import React from 'react';
 
-//import configureStore from "./store";
-//const store = configureStore();
+import configureStore from "./store";
+const store = configureStore();
 
 const RNRedux = ()=>(
-    //<Provider store = {store}>
+    <Provider store = {store}>
         <App/>
-    //</Provider>
+    </Provider>
 )
 
 AppRegistry.registerComponent(appName, () => RNRedux);
