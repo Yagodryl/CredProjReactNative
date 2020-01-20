@@ -2,12 +2,15 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 //reducers
-import {articlesReducer} from './components/Articles/reducer';
+import {listArticlesReducer} from './components/Articles/reducer';
+import {articleReducer} from './components/ArticleDetails/reducer';
 
 
 const rootReducer = combineReducers({
     //microCredit: microCreditReducer,
-    articles: articlesReducer
+    articles: listArticlesReducer,
+    article: articleReducer,
+
 });
 
 const configureStore = () => {

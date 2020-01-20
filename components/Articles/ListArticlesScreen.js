@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import {ImageBackground} from 'react-native';
+import { ImageBackground } from 'react-native';
 import ArticleItem from "../CustomElements/ArticleItem";
 import Scroller from "../CustomElements/Scroller";
 import { connect } from "react-redux";
+import Loader from "../CustomElements/Loader";
+import ErrorMess from "../CustomElements/ErrorMess";
+
 
 import * as Articles from "./reducer";
 
@@ -14,15 +17,15 @@ class ListArticlesScreen extends Component {
         headerStyle: {
             backgroundColor: '#000',
         },
-        headerTintColor: '#fff',  
+        headerTintColor: '#fff',
     };
     state = {}
 
-    componentDidMount=()=>{
+    componentDidMount = () => {
         this.props.getArticles();
     }
 
-    redirect=(id)=>{
+    redirect = (id) => {
         this.props.navigation.navigate('ArticleDetails', {
             id: `${id}`,
         });
@@ -39,42 +42,36 @@ class ListArticlesScreen extends Component {
         // console.log(Object.values(this.props.articles));
 
         let listArticles = Object.values(this.props.articles);
-        const mapListArticles = listArticles.map(item=>{
+        const mapListArticles = listArticles.map(item => {
             return (
-                <ArticleItem redirect={this.redirect} key={item.id} id={item.id} title={item.title}/>
+                <ArticleItem redirect={ this.redirect } key={ item.id } id={ item.id } title={ item.title } />
             )
         })
         return (
             <ImageBackground style={ { width: '100%', height: '100%' } } source={ require('../../Img/articles.jpg') }>
-
-        <ScrollView style={ { backgroundColor: 'rgba(0,0,0,.5)', height: '100%'} }>
-        <Scroller navigate={this.props.navigation.navigate}></Scroller>
-            {mapListArticles}
-
-
-
-            {/* <ArticleItem redirect={this.redirect} id="1" title="Salo sdf sffds fsdd fsdfsdfs sds dsffds fsdd fsdfsdfs sdfsd f sdf sdf"></ArticleItem>
-            <ArticleItem redirect={this.redirect} id="2" title="Salo sdf sds dsffds fsdd fsdfsdfs sdfsd f sdf sdf"></ArticleItem>
-            <ArticleItem redirect={this.redirect} id="3" title="Salo sdf sffds fsdd fsdfsdfs sffds fsdd fsdfsdfs sds dsffds fsdd fsdfsdfs sdfsd f sdf sdf"></ArticleItem>
-            <ArticleItem redirect={this.redirect} id="4" title="Salo sdf sds dsffds fsdd fsdfsdfs sdfsd f sdf sdf"></ArticleItem> */}
-        </ScrollView>
-        </ImageBackground>);
+                {this.props.isLoading? (<Loader/>): (this.props.isError?<ErrorMess/>:(
+                    <ScrollView style={ { backgroundColor: 'rgba(0,0,0,.5)', height: '100%' } }>
+                    <Scroller navigate={ this.props.navigation.navigate }></Scroller>
+                    { mapListArticles }
+                </ScrollView>
+                ))}
+                
+            </ImageBackground>);
     }
 }
 
-const mapStateToProps = ({articles}) => {
+const mapStateToProps = ({ articles }) => {
 
-    console.log("------****---------", articles);
     return {
         articles: articles.data,
-        // isLoading: articles.loading,
-        // error: articles.error
+        isLoading: articles.loading,
+        isError: articles.error
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getArticles: ()=>{
+        getArticles: () => {
             dispatch(Articles.getArticles());
         }
     }

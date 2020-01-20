@@ -1,10 +1,10 @@
 
-import ArticlesService from './ArticlesService';
+import ArticleService from './ArticleService';
 
 //action types
-export const GET_LIST_ARTICLES_STARTED = 'articles/GET_LIST_ARTICLES_STARTED';
-export const GET_LIST_ARTICLES_SUCCESS = 'articles/GET_LIST_ARTICLES_SUCCESS';
-export const GET_LIST_ARTICLES_FAILED = 'articles/GET_LIST_ARTICLES_FAILED';
+export const GET_ARTICLE_STARTED = 'article/GET_ARTICLE_STARTED';
+export const GET_ARTICLE_SUCCESS = 'article/GET_ARTICLE_SUCCESS';
+export const GET_ARTICLE_FAILED = 'article/GET_ARTICLE_FAILED';
 
 
 const initialState = {
@@ -14,23 +14,23 @@ const initialState = {
 }
 
 //reducer
-export const listArticlesReducer = (state = initialState, action) => {
+export const articleReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_LIST_ARTICLES_STARTED: {
+        case GET_ARTICLE_STARTED: {
             return {
                 ...state,
                 loading: true,
                 error: false
             }
         }
-        case GET_LIST_ARTICLES_SUCCESS: {
+        case GET_ARTICLE_SUCCESS: {
             return {
                 ...state,
                 loading: false,
                 data: action.payload,
             }
         }
-        case GET_LIST_ARTICLES_FAILED: {
+        case GET_ARTICLE_FAILED: {
             return {
                 ...state,
                 loading: false,
@@ -43,16 +43,16 @@ export const listArticlesReducer = (state = initialState, action) => {
 
 //action creator
 
-export const getArticles = () =>{
+export const getArticle = (id) =>{
     return dispatch =>{
-        dispatch(listArticlesActions.started());
-        ArticlesService.getArticles()
+        dispatch(articleActions.started());
+        ArticleService.getArticle(id)
         .then(response=>{
-            //console.log(response.val());
-            dispatch(listArticlesActions.success(response.val()));
+          //  console.log(response.val());
+            dispatch(articleActions.success(response.val()));
         })
         .catch((response)=>{
-            dispatch(listArticlesActions.failed());
+            dispatch(articleActions.failed());
             console.log(response.val());
         })
     }
@@ -60,21 +60,21 @@ export const getArticles = () =>{
 
 
 
-export const listArticlesActions = {
+export const articleActions = {
     started: () => {
         return {
-            type: GET_LIST_ARTICLES_STARTED,
+            type: GET_ARTICLE_STARTED,
         };
     },
     success: response => {
         return {
-            type: GET_LIST_ARTICLES_SUCCESS,
+            type: GET_ARTICLE_SUCCESS,
             payload: response,
         };
     },
     failed: (response) => {
         return {
-            type: GET_LIST_ARTICLES_FAILED,
+            type: GET_ARTICLE_FAILED,
             // error: response,
         };
     }

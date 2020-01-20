@@ -18,7 +18,7 @@ import ListArticlesScreen from "./components/Articles/ListArticlesScreen";
 import MicroCreditDetailsScreen from "./components/MicroCredit/MicroCreditDetailsScreen"
 import CreditDetailsScreen from "./components/Credit/CreditDetailsScreen"
 import CardDetailsScreen from "./components/Cards/CardDetailsScreen"
-import ArticleDetailsScreen from "./components/Articles/ArticleDetailsScreen";
+import ArticleDetailsScreen from "./components/ArticleDetails/ArticleDetailsScreen";
 
 
 const MainNavigator = createStackNavigator(
@@ -53,11 +53,11 @@ export default class App extends React.Component {
 
 
 
-  setArticle(ar){
-    const db = firebase.database().ref();
-    let id = db.child("/articles").push();
-    id.set({...ar, id: id.key});
-  }
+  // setArticle(ar){
+  //   const db = firebase.database().ref();
+  //   let id = db.child("/articles").push();
+  //   id.set({...ar, id: id.key});
+  // }
 
   componentDidMount() {
 
