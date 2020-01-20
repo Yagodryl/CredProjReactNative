@@ -1,8 +1,11 @@
 
+import MicroCreditService from "./MicroCreditService"
+
+
 //action types
-export const GET_LIST_MICRO_CREDIT_STARTED = 'microCredit/GET_LIST_MICRO_CREDIT_STARTED';
-export const GET_LIST_MICRO_CREDIT_SUCCESS = 'microCredit/GET_LIST_MICRO_CREDIT_SUCCESS';
-export const GET_LIST_MICRO_CREDIT_FAILED = 'microCredit/GET_LIST_MICRO_CREDIT_FAILED';
+export const GET_LIST_MICRO_CREDIT_STARTED = 'listMicroCredit/GET_LIST_MICRO_CREDIT_STARTED';
+export const GET_LIST_MICRO_CREDIT_SUCCESS = 'listMicroCredit/GET_LIST_MICRO_CREDIT_SUCCESS';
+export const GET_LIST_MICRO_CREDIT_FAILED = 'listMicroCredit/GET_LIST_MICRO_CREDIT_FAILED';
 
 
 const initialState = {
@@ -12,13 +15,13 @@ const initialState = {
 }
 
 //reducer
-export const microCreditReducer = (state = initialState, action) => {
+export const listMicroCreditReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_LIST_MICRO_CREDIT_STARTED: {
             return {
                 ...state,
                 loading: true,
-                error: {}
+                error: false
             }
         }
         case GET_LIST_MICRO_CREDIT_SUCCESS: {
@@ -31,14 +34,28 @@ export const microCreditReducer = (state = initialState, action) => {
         case GET_LIST_MICRO_CREDIT_FAILED: {
             return {
                 ...state,
-                loading: true,
-                error: action.error
+                loading: false,
+                error: true
             }
         }
+        default: return state;
     }
 }
 
-//action creator
+//action creators
+export const getListrMicroCredit =()=>{
+    return dispatch => {
+        dispatch(listMicroCreditActions.started());
+        MicroCreditService.getMicroCreditList()
+        .then(response=>{
+            dispatch(listMicroCreditActions.success(response.val()));
+        })
+        .catch((response)=>{
+            dispatch(listMicroCreditActions.failed())
+        })
+    }
+}
+
 
 export const listMicroCreditActions = {
     started: () => {
@@ -49,13 +66,13 @@ export const listMicroCreditActions = {
     success: response => {
         return {
             type: GET_LIST_MICRO_CREDIT_SUCCESS,
-            payload: response.data,
+            payload: response,
         };
     },
     failed: (response) => {
         return {
             type: GET_LIST_MICRO_CREDIT_FAILED,
-            error: response.data,
+            //error: response.data,
         };
     }
 }

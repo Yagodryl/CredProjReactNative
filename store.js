@@ -4,12 +4,13 @@ import thunk from 'redux-thunk';
 //reducers
 import {listArticlesReducer} from './components/Articles/reducer';
 import {articleReducer} from './components/ArticleDetails/reducer';
-
+import {listMicroCreditReducer} from './components/MicroCredit/reducer';
 
 const rootReducer = combineReducers({
     //microCredit: microCreditReducer,
     articles: listArticlesReducer,
     article: articleReducer,
+    listMicroCredit: listMicroCreditReducer,
 
 });
 

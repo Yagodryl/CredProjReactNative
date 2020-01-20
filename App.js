@@ -59,6 +59,12 @@ export default class App extends React.Component {
   //   id.set({...ar, id: id.key});
   // }
 
+  // setMicroCredit(mc){
+  //   const db = firebase.database().ref();
+  //   let id = db.child("/microCredits").push();
+  //   id.set({...mc, id: id.key});
+  // }
+
   componentDidMount() {
 
     const auth = firebase.auth();
@@ -68,7 +74,6 @@ export default class App extends React.Component {
     })
     .catch((err)=>{
       this.setState({ isLoading: false, isError: true });
-
     })
 
 
@@ -76,6 +81,41 @@ export default class App extends React.Component {
     // firebase.database().ref().once('value', (snap) => {
     //   console.log(snap.val());
     // })
+
+    // this.setMicroCredit({
+    //   bank: {
+    //     image: "https://st1.prosto.im/cache/st1/7/6/0/4/76041/76041.png",
+    //     name: "Universal Bank"
+    //   },
+    //   description: "Документи та вік від 18 років.",
+    //   money: "1000-10000грн",
+    //   percent: "10%",
+    //   term: "10-31 дн.",
+    //   title: "Мікрокредит до 10000грн"
+    // });
+    // this.setMicroCredit({
+    //   bank: {
+    //     image: "https://st1.prosto.im/cache/st1/1/1/8/2/1182/1182.gif",
+    //     name: "Alfa Bank"
+    //   },
+    //   description: "Документи та вік від 18 років.",
+    //   money: "1000-10000грн",
+    //   percent: "8%",
+    //   term: "5-31 дн.",
+    //   title: "Мікрокредит до 10000грн"
+    // });
+    // this.setMicroCredit({
+    //   bank: {
+    //     image: "https://pbs.twimg.com/profile_images/957912926127579136/Vchzj67S.jpg",
+    //     name: "Privat Bank"
+    //   },
+    //   description: "Документи та вік від 18 років. Довідка про доходи.",
+    //   money: "1000-15000грн",
+    //   percent: "10%",
+    //   term: "10-31 дн.",
+    //   title: "Мікрокредит від 1000 до 15000грн"
+    // });
+
   }
 
 
