@@ -31,7 +31,6 @@ class ListCardsScreen extends Component {
     }
     render() {
         const { cardsList, isLoading, isError } = this.props;
-        console.log(cardsList);
         const list = Object.values(cardsList);
         const mapCardsList = list.map(item => {
             return <CustomCard image={ item.bank.image } title={ item.bank.name } description={ item.title } redirect={ this.redirect } id={ item.id } key={ item.id } />
@@ -53,7 +52,7 @@ class ListCardsScreen extends Component {
 
 const mapStateToProps = ({cardsList}) => {
 
-    console.log("store",cardsList)
+    // console.log("store",cardsList)
     return {
         cardsList: cardsList.data,
         isLoading: cardsList.loading,

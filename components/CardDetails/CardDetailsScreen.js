@@ -3,7 +3,11 @@ import { Image, Divider, Button } from 'react-native-elements';
 import { View, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import CreditInfoScreenForm from "../CustomElements/CreditInfoScreenForm"
+import { connect } from "react-redux";
+import Loader from "../CustomElements/Loader";
+import ErrorMess from "../CustomElements/ErrorMess";
 
+import * as CreditCard from "./reducer";
 
 
 
@@ -18,17 +22,48 @@ class CardDetailsScreen extends Component {
     };
     state = {}
 
+    componentDidMount = () => {
+        let cdId = this.props.navigation.getParam('id');
+       //console.log("id", cdId)
+        this.props.getCreditCardDetails(cdId);
+    }
+
     render() {
 
-        return (
+        const { isLoading, isError, creditCardDetails: { bank, id, title, description, money, percent, term } } = this.props;
+
+        const details = (
             <CreditInfoScreenForm
-                title="Bank Name Card"
-                image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
-                description='<Text>dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf</Text><Text>dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf</Text>     <Text>dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf</Text>'
-                details='<Text>dfsfsdfsdfs dfsdfddfsdfd dsf sd fs dfsdf dfsfsdfsdfs d dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf</Text>'
-            />
-        );
+                bankName={ bank.name }
+                title={ title }
+                image={ bank.image }
+                description={ description }
+                details={ "Сума: " + money + "\n\nВідсоток: " + percent + "\n\nТермін: " + term }
+            />);
+
+
+        return (isLoading ? (<Loader />) : (isError ? <ErrorMess /> : (details)));
+        //return(<Text>ss</Text>)
+
+
     }
 }
 
-export default CardDetailsScreen;
+const mapStateToProps = ({ creditCardDetails }) => {
+   // console.log("creditCardDetails", creditCardDetails)
+    return {
+        creditCardDetails: creditCardDetails.data,
+        isLoading: creditCardDetails.loading,
+        isError: creditCardDetails.error
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCreditCardDetails: (id) => {
+            dispatch(CreditCard.getCreditCardDetails(id));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardDetailsScreen);

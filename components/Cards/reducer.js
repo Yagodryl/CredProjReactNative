@@ -48,7 +48,6 @@ export const getCardsList =()=>{
         dispatch(listCardsListActions.started());
         CardsService.getListCards()
         .then(response=>{
-            console.log(response.val())
             dispatch(listCardsListActions.success(response.val()));
         })
         .catch((response)=>{
