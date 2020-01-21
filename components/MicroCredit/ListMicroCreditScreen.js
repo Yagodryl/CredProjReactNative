@@ -24,7 +24,7 @@ class ListMicroCreditScreen extends Component {
 
     state = {}
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.props.getListrMicroCredit();
     }
 
@@ -40,27 +40,17 @@ class ListMicroCreditScreen extends Component {
         let list = Object.values(listMicroCredit);
         // console.log(list);
         const mapListMicroCredit = list.map(item => {
-            return (
-                <CustomCard image={ item.bank.image }
-                    title={ item.bank.name }
-                    description={ item.title }
-                    redirect={ this.redirect }
-                    id={ item.id }
-                    key={ item.id } />
-            );
+            return <CustomCard image={ item.bank.image } title={ item.bank.name } description={ item.title } redirect={ this.redirect } id={ item.id } key={ item.id } />
+
         })
         return (
             <ImageBackground style={ { width: '100%', height: '100%' } } source={ require('../../Img/microcredit.jpg') }>
-                <ScrollView style={ { backgroundColor: 'rgba(0,0,0,.5)', height: '100%' } }>
-                    <Scroller navigate={ this.props.navigation.navigate }></Scroller>
-                    {/* <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
-                title="Bank Name 5"
-                description="dfsfsdfsdfs dfsdfd dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf"
-                redirect={this.redirect} 
-                id={5}/>
-           */}
-            {mapListMicroCredit}
-                </ScrollView>
+                { isLoading ? (<Loader />) : (isError ? <ErrorMess /> : (
+                    <ScrollView style={ { backgroundColor: 'rgba(0,0,0,.5)', height: '100%' } }>
+                        <Scroller navigate={ this.props.navigation.navigate }></Scroller>
+                        { mapListMicroCredit }
+                    </ScrollView>
+                )) }
             </ImageBackground>);
     }
 }

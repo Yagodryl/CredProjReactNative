@@ -11,7 +11,7 @@ export const GET_LIST_MICRO_CREDIT_FAILED = 'listMicroCredit/GET_LIST_MICRO_CRED
 const initialState = {
     data: {},
     loading: false,
-    error: {},
+    error: false,
 }
 
 //reducer

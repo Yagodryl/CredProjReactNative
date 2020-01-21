@@ -7,6 +7,12 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
     textTitle: {
+        fontSize: 25,
+        color: 'white',
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    textBank: {
         fontSize: 35,
         color: 'white',
         textAlign: 'center',
@@ -48,12 +54,15 @@ const styles = StyleSheet.create({
 
 });
 
-const CreditInfoScreenForm = ({id, title, image, description, details})=>(
+const CreditInfoScreenForm = ({id, title,bankName, image, description, details})=>(
     <ImageBackground style={ { width: '100%', height: '100%' } } source={ require('../../Img/background.jpg') }>
     
     <ScrollView style={ styles.container }>
         <Image style={styles.image} source={ { uri: image } }></Image>
+        <Text style={styles.textBank}> {bankName}</Text>
+
         <Text style={styles.textTitle}> {title}</Text>
+
 
         <View style={styles.descriptionConatainer}>
         <Text style={styles.textDetails}>{details}</Text>

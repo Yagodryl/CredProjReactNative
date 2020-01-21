@@ -15,9 +15,9 @@ import ListCreditsScreen from "./components/Credit/ListCreditsScreen";
 import ListCardsScreen from "./components/Cards/ListCardsScreen";
 import ListArticlesScreen from "./components/Articles/ListArticlesScreen";
 
-import MicroCreditDetailsScreen from "./components/MicroCredit/MicroCreditDetailsScreen"
-import CreditDetailsScreen from "./components/Credit/CreditDetailsScreen"
-import CardDetailsScreen from "./components/Cards/CardDetailsScreen"
+import MicroCreditDetailsScreen from "./components/MicroCreditDetails/MicroCreditDetailsScreen";
+import CreditDetailsScreen from "./components/Credit/CreditDetailsScreen";
+import CardDetailsScreen from "./components/Cards/CardDetailsScreen";
 import ArticleDetailsScreen from "./components/ArticleDetails/ArticleDetailsScreen";
 
 
