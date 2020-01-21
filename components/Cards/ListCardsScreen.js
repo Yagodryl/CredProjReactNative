@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { ScrollView, ImageBackground } from "react-native";
 import CustomCard from "../CustomElements/CustomCard";
 import Scroller from "../CustomElements/Scroller";
+import { connect } from "react-redux";
+import Loader from "../CustomElements/Loader";
+import ErrorMess from "../CustomElements/ErrorMess";
+
+import * as ListCard from "./reducer";
+
 
 
 class ListCardsScreen extends Component {
@@ -14,26 +20,53 @@ class ListCardsScreen extends Component {
     };
     state = {}
 
+    componentDidMount=()=>{
+        this.props.getCardsList()
+    }
+
     redirect = (id) => {
         this.props.navigation.navigate('CardDetails', {
             id: `${id}`,
         });
     }
     render() {
+        const { cardsList, isLoading, isError } = this.props;
+        console.log(cardsList);
+        const list = Object.values(cardsList);
+        const mapCardsList = list.map(item => {
+            return <CustomCard image={ item.bank.image } title={ item.bank.name } description={ item.title } redirect={ this.redirect } id={ item.id } key={ item.id } />
+
+        })
+
         return (
             <ImageBackground style={ { width: '100%', height: '100%' } } source={ require('../../Img/cards.jpg') }>
-
-            <ScrollView style={ { backgroundColor: 'rgba(0,0,0,.5)', height: '100%' } }>
-        <Scroller navigate={this.props.navigation.navigate}></Scroller>
-                
-                <CustomCard image="https://image.shutterstock.com/image-vector/bank-icon-vector-isolated-260nw-668137015.jpg"
-                    title="Bank Name"
-                    description="dfsfsdfsdfs dfsdfd dsf sd fs dfsdf dfsfsdfsdfs dfsdfd dsf sd fs dfsdf"
-                    redirect={ this.redirect } />
-            </ScrollView>
+                { isLoading ? (<Loader />) : (isError ? <ErrorMess /> : (
+                    <ScrollView style={ { backgroundColor: 'rgba(0,0,0,.5)', height: '100%' } }>
+                        <Scroller navigate={ this.props.navigation.navigate }/>
+                        { mapCardsList }
+                    </ScrollView>
+                )) }
             </ImageBackground>
         );
     }
 }
 
-export default ListCardsScreen;
+const mapStateToProps = ({cardsList}) => {
+
+    console.log("store",cardsList)
+    return {
+        cardsList: cardsList.data,
+        isLoading: cardsList.loading,
+        isError: cardsList.error
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCardsList: () => {
+            dispatch(ListCard.getCardsList());
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListCardsScreen);

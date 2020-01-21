@@ -17,7 +17,7 @@ import ListArticlesScreen from "./components/Articles/ListArticlesScreen";
 
 import MicroCreditDetailsScreen from "./components/MicroCreditDetails/MicroCreditDetailsScreen";
 import CreditDetailsScreen from "./components/CreditDetails/CreditDetailsScreen";
-import CardDetailsScreen from "./components/Cards/CardDetailsScreen";
+import CardDetailsScreen from "./components/CreditDetails/CreditDetailsScreen";
 import ArticleDetailsScreen from "./components/ArticleDetails/ArticleDetailsScreen";
 
 

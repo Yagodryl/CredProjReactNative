@@ -8,7 +8,7 @@ import {listMicroCreditReducer} from './components/MicroCredit/reducer';
 import {microCreditDetailsReducer} from './components/MicroCreditDetails/reducer';
 import {listCreditReducer} from './components/Credit/reducer';
 import {creditDetailsReducer} from "./components/CreditDetails/reducer";
-
+import {cardsListReducer} from "./components/Cards/reducer";
 
 const rootReducer = combineReducers({
     //microCredit: microCreditReducer,
@@ -17,7 +17,8 @@ const rootReducer = combineReducers({
     listMicroCredit: listMicroCreditReducer,
     microCreditDetails: microCreditDetailsReducer,
     listCredit: listCreditReducer,
-    creditDetails: creditDetailsReducer
+    creditDetails: creditDetailsReducer,
+    cardsList: cardsListReducer
 });
 
 const configureStore = () => {

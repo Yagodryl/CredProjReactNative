@@ -1,4 +1,6 @@
 
+import CardsService from "./CardsService";
+
 //action types
 export const GET_LIST_CARDS_STARTED = 'cardsList/GET_LIST_CARDS_STARTED';
 export const GET_LIST_CARDS_SUCCESS = 'cardsList/GET_LIST_CARDS_SUCCESS';
@@ -8,7 +10,7 @@ export const GET_LIST_CARDS_FAILED = 'cardsList/GET_LIST_CARDS_FAILED';
 const initialState = {
     data: {},
     loading: false,
-    error: {},
+    error: false,
 }
 
 //reducer
@@ -18,7 +20,7 @@ export const cardsListReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
-                error: {}
+                error: false
             }
         }
         case GET_LIST_CARDS_SUCCESS: {
@@ -31,14 +33,32 @@ export const cardsListReducer = (state = initialState, action) => {
         case GET_LIST_CARDS_FAILED: {
             return {
                 ...state,
-                loading: true,
-                error: action.error
+                loading: false,
+                error: true
             }
         }
+        default: return state;
     }
 }
 
 //action creator
+
+export const getCardsList =()=>{
+    return dispatch => {
+        dispatch(listCardsListActions.started());
+        CardsService.getListCards()
+        .then(response=>{
+            console.log(response.val())
+            dispatch(listCardsListActions.success(response.val()));
+        })
+        .catch((response)=>{
+            dispatch(listCardsListActions.failed())
+        })
+    }
+}
+
+
+
 export const listCardsListActions = {
     started: () => {
         return {
@@ -48,13 +68,13 @@ export const listCardsListActions = {
     success: response => {
         return {
             type: GET_LIST_CARDS_SUCCESS,
-            payload: response.data,
+            payload: response,
         };
     },
-    failed: (response) => {
+    failed: () => {
         return {
             type: GET_LIST_CARDS_FAILED,
-            error: response.data,
+            //error: response.data,
         };
     }
 }
