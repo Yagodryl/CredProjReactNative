@@ -1,24 +1,26 @@
 
+import CreditService from "./CreditService"
+
 //action types
-export const GET_LIST_CREDIT_STARTED = 'credit/GET_LIST_CREDIT_STARTED';
-export const GET_LIST_CREDIT_SUCCESS = 'credit/GET_LIST_CREDIT_SUCCESS';
-export const GET_LIST_CREDIT_FAILED = 'credit/GET_LIST_CREDIT_FAILED';
+export const GET_LIST_CREDIT_STARTED = 'listCredit/GET_LIST_CREDIT_STARTED';
+export const GET_LIST_CREDIT_SUCCESS = 'listCredit/GET_LIST_CREDIT_SUCCESS';
+export const GET_LIST_CREDIT_FAILED = 'listCredit/GET_LIST_CREDIT_FAILED';
 
 
 const initialState = {
     data: {},
     loading: false,
-    error: {},
+    error: false,
 }
 
 //reducer
-export const creditReducer = (state = initialState, action) => {
+export const listCreditReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_LIST_CREDIT_STARTED: {
             return {
                 ...state,
                 loading: true,
-                error: {}
+                error: false
             }
         }
         case GET_LIST_CREDIT_SUCCESS: {
@@ -31,14 +33,29 @@ export const creditReducer = (state = initialState, action) => {
         case GET_LIST_CREDIT_FAILED: {
             return {
                 ...state,
-                loading: true,
-                error: action.error
+                loading: false,
+                error: true
             }
         }
+        default: return state;
     }
 }
 
 //action creator
+
+export const getListCredit =()=>{
+    return dispatch => {
+        dispatch(listCreditActions.started());
+        CreditService.getListCredit()
+        .then(response=>{
+            dispatch(listCreditActions.success(response.val()));
+        })
+        .catch((response)=>{
+            dispatch(listCreditActions.failed())
+        })
+    }
+}
+
 export const listCreditActions = {
     started: () => {
         return {
@@ -48,7 +65,7 @@ export const listCreditActions = {
     success: response => {
         return {
             type: GET_LIST_CREDIT_SUCCESS,
-            payload: response.data,
+            payload: response,
         };
     },
     failed: (response) => {

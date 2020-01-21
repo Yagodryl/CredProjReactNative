@@ -37,7 +37,7 @@ class ListMicroCreditScreen extends Component {
 
     render() {
         const { listMicroCredit, isLoading, isError } = this.props;
-        let list = Object.values(listMicroCredit);
+        const list = Object.values(listMicroCredit);
         // console.log(list);
         const mapListMicroCredit = list.map(item => {
             return <CustomCard image={ item.bank.image } title={ item.bank.name } description={ item.title } redirect={ this.redirect } id={ item.id } key={ item.id } />
@@ -47,7 +47,7 @@ class ListMicroCreditScreen extends Component {
             <ImageBackground style={ { width: '100%', height: '100%' } } source={ require('../../Img/microcredit.jpg') }>
                 { isLoading ? (<Loader />) : (isError ? <ErrorMess /> : (
                     <ScrollView style={ { backgroundColor: 'rgba(0,0,0,.5)', height: '100%' } }>
-                        <Scroller navigate={ this.props.navigation.navigate }></Scroller>
+                        <Scroller navigate={ this.props.navigation.navigate }/>
                         { mapListMicroCredit }
                     </ScrollView>
                 )) }

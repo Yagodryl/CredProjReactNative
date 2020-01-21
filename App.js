@@ -16,7 +16,7 @@ import ListCardsScreen from "./components/Cards/ListCardsScreen";
 import ListArticlesScreen from "./components/Articles/ListArticlesScreen";
 
 import MicroCreditDetailsScreen from "./components/MicroCreditDetails/MicroCreditDetailsScreen";
-import CreditDetailsScreen from "./components/Credit/CreditDetailsScreen";
+import CreditDetailsScreen from "./components/CreditDetails/CreditDetailsScreen";
 import CardDetailsScreen from "./components/Cards/CardDetailsScreen";
 import ArticleDetailsScreen from "./components/ArticleDetails/ArticleDetailsScreen";
 
@@ -65,6 +65,12 @@ export default class App extends React.Component {
   //   id.set({...mc, id: id.key});
   // }
 
+  // setCredit(cr){
+  //   const db = firebase.database().ref();
+  //   let id = db.child("/credits").push();
+  //   id.set({...cr, id: id.key});
+  // }
+
   componentDidMount() {
 
     const auth = firebase.auth();
@@ -104,15 +110,15 @@ export default class App extends React.Component {
     //   term: "5-31 дн.",
     //   title: "Мікрокредит до 10000грн"
     // });
-    // this.setMicroCredit({
+    // this.setCredit({
     //   bank: {
     //     image: "https://pbs.twimg.com/profile_images/957912926127579136/Vchzj67S.jpg",
     //     name: "Privat Bank"
     //   },
-    //   description: "Документи та вік від 18 років. Довідка про доходи.",
-    //   money: "1000-15000грн",
-    //   percent: "10%",
-    //   term: "10-31 дн.",
+    //   description: "Документи та вік від 18 років. Довідка про доходи. Прописка.",
+    //   money: "до 500000грн",
+    //   percent: "8%",
+    //   term: "до 5 років",
     //   title: "Мікрокредит від 1000 до 15000грн"
     // });
 
